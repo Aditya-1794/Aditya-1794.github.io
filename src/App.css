@@ -1,0 +1,41 @@
+.intro-column {
+	box-sizing: border-box;
+	width: min(100%, 680px);
+	margin-inline: auto;
+	padding: 100px 24px 48px;
+}
+
+.intro-column p {
+	margin: 0 0 14px;
+	color: #a5a5a5;
+	font-size: 14px;
+	line-height: 1.65;
+}
+
+.intro-column .lighter {
+	margin-bottom: 14px;
+	color: #686868;
+}
+
+.intro-name {
+	font-family: 'Baskerville', 'Palatino Linotype', Palatino, Georgia, serif;
+	font-size: 1.4em;
+	font-style: italic;
+	font-weight: 700;
+	letter-spacing: -0.04em;
+	color: #d4d4d4;
+}
+
+.intro-column hr {
+	border: 0;
+	border-top: 0.5px solid rgba(255, 255, 255, 0.16);
+
+  margin-top: 40px;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 600px) {
+	.intro-column {
+		padding-top: 64px;
+	}
+}

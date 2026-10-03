@@ -1,0 +1,120 @@
+.workContainer {
+    position: relative;
+    margin-bottom: 14px;
+}
+
+.workRow {
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.3fr);
+    align-items: baseline;
+    gap: 18px;
+}
+
+.workTitleWrap {
+    min-width: 0;
+}
+
+.workTitle {
+    display: inline-block;
+    color: #a5a5a5;
+    font-size: 14px;
+    line-height: 1.45;
+    text-decoration: none;
+    cursor: help;
+    overflow-wrap: anywhere;
+}
+
+.workTitle:focus-visible {
+    outline: 1px solid #a5a5a5;
+    outline-offset: 3px;
+}
+
+.workEmoji {
+    margin-right: 5px;
+}
+
+.workPopover {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: calc(100% + 18px);
+    box-sizing: border-box;
+    width: min(420px, calc(50vw - 340px));
+    max-height: min(70vh, 460px);
+    padding: 10px 13px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: #171717;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    overflow-y: auto;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(4px);
+    transition: opacity 120ms ease, transform 120ms ease, visibility 120ms;
+}
+
+.workTitleWrap:hover .workPopover,
+.workTitleWrap:focus-within .workPopover {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.workDetails {
+    margin: 0;
+    padding-left: 17px;
+    color: #a5a5a5;
+    font-size: 12px;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+.workDetails li {
+    margin-bottom: 5px;
+}
+
+.workDetails li:last-child {
+    margin-bottom: 0;
+}
+
+.workOutcome {
+    display: block;
+    min-width: 0;
+    color: #686868;
+    font-size: 12px;
+    text-align: right;
+    overflow-wrap: break-word;
+    text-decoration: none;
+}
+
+a.workOutcome:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+    .workRow {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 3px;
+    }
+
+    .workOutcome {
+        text-align: left;
+    }
+}
+
+@media (max-width: 1100px) {
+    .workPopover {
+        right: 0;
+        left: 50%;
+        width: calc(50% - 9px);
+    }
+}
+
+@media (max-width: 600px) {
+    .workPopover {
+        top: calc(100% + 7px);
+        right: auto;
+        left: 0;
+        width: 100%;
+        max-height: 60vh;
+    }
+}

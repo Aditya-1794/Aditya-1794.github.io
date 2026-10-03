@@ -1,0 +1,86 @@
+.skillsScroller {
+    box-sizing: border-box;
+    width: 100%;
+    margin: 32px 0 10px;
+    padding: 13px 0;
+    overflow: hidden;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
+}
+
+.skillsTrack {
+    display: flex;
+    width: max-content;
+    animation: skillsTicker 54s linear infinite;
+}
+
+.skillsGroup {
+    display: flex;
+    flex-shrink: 0;
+    gap: 9px;
+    margin: 0;
+    padding: 0 9px 0 0;
+    list-style: none;
+}
+
+.skillsGroup li {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 5px 9px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.025);
+    color: #aaa;
+    font-size: 12px;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+
+.skillsGroup li::before {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #88bdb2;
+    content: '';
+}
+
+.skillsGroup li:nth-child(4n + 2)::before {
+    background: #d49a78;
+}
+
+.skillsGroup li:nth-child(4n + 3)::before {
+    background: #d6c17e;
+}
+
+.skillsGroup li:nth-child(4n)::before {
+    background: #9da6cc;
+}
+
+@keyframes skillsTicker {
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+@media (hover: hover) {
+    .skillsScroller:hover .skillsTrack {
+        animation-play-state: paused;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .skillsScroller {
+        overflow-x: auto;
+        mask-image: none;
+    }
+
+    .skillsTrack {
+        animation: none;
+    }
+
+    .skillsGroup[aria-hidden='true'] {
+        display: none;
+    }
+}
