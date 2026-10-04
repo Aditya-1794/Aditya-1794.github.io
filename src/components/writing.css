@@ -7,6 +7,12 @@
 }
 
 .writingTitle {
+	border: 0;
+	padding: 0;
+	background: none;
+	font: inherit;
+	text-align: left;
+	cursor: pointer;
 	position: relative;
 	display: inline-block;
 	width: fit-content;
@@ -37,8 +43,11 @@
 }
 
 .writingTitle:focus-visible {
-	outline: none;
+	outline: 1px solid #aaa;
+	outline-offset: 4px;
 }
+
+.writingTitle[aria-expanded='true'] { color: #eee; }
 
 .writingDate {
 	min-width: 0;

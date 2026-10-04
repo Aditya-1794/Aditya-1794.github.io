@@ -34,10 +34,11 @@
 }
 
 .workPopover {
+    display: none;
     position: absolute;
     z-index: 2;
     top: 0;
-    left: calc(100% + 18px);
+    right: calc(100% + 18px);
     box-sizing: border-box;
     width: min(420px, calc(50vw - 340px));
     max-height: min(70vh, 460px);
@@ -54,6 +55,7 @@
 
 .workTitleWrap:hover .workPopover,
 .workTitleWrap:focus-within .workPopover {
+    display: block;
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
@@ -66,6 +68,26 @@
     font-size: 12px;
     line-height: 1.5;
     overflow-wrap: anywhere;
+}
+
+.article-open .workPopover {
+    top: 100%;
+    right: auto;
+    left: 0;
+    width: min(420px, 100%);
+    max-height: min(50dvh, 360px);
+    z-index: 4;
+}
+
+@media (min-width: 601px) and (max-width: 1100px) {
+    .article-open .workRow {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 3px;
+    }
+
+    .article-open .workOutcome {
+        text-align: left;
+    }
 }
 
 .workDetails li {
@@ -103,8 +125,8 @@ a.workOutcome:hover {
 
 @media (max-width: 1100px) {
     .workPopover {
-        right: 0;
-        left: 50%;
+        right: auto;
+        left: 0;
         width: calc(50% - 9px);
     }
 }

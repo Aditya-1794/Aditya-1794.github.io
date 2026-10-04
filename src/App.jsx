@@ -1,15 +1,23 @@
 import './App.css'
+import { useState } from 'react'
+import { articles } from './articles'
+import ArticleReader from './components/article-reader'
 
 import Work from './components/work'
 import Writing from './components/writing'
 import SkillsScroller from './components/skills-scroller'
+import SocialLinks from './components/social-links'
 
 function App() {
+  const [activeArticle, setActiveArticle] = useState(null)
   return (
+    <div className={activeArticle ? 'page-layout article-open' : 'page-layout'}>
+    <div className="home-pane">
     <main className="intro-column">
       {/* TODO: make inline links for "Georgia Tech," "IEEE MIT URTC," and "projects" */}
       {/* TODO: make my name a cool font that stands out */}
       <p className="lighter">👋 Hey there! I'm <span className="intro-name">Aditya</span>, a CS student at Georgia Tech. 🐝</p>
+      <SocialLinks />
       <p>Previously, I worked on research involving designing interpretable ML pipelines for image based medical diagnosis.</p>
       <p>Now, I'm working on building fundamentals to pursue AI safety-related research, as well as building cool projects.</p>
       <hr />
@@ -86,9 +94,14 @@ function App() {
 
       <br />
       <p className="lighter">Writing</p>
-      <Writing title="Placeholder for a piece" link="https://www.google.com" date="Oct 3 2026" />
+      {articles.map((article) => (
+        <Writing key={article.slug} title={article.title} date={article.displayDate} active={activeArticle?.slug === article.slug} onOpen={() => setActiveArticle(article)} />
+      ))}
 
     </main>
+    </div>
+    {activeArticle && <ArticleReader key={activeArticle.slug} article={activeArticle} onClose={() => setActiveArticle(null)} />}
+    </div>
   )
 }
 
