@@ -8,16 +8,32 @@ import Writing from './components/writing'
 import SkillsScroller from './components/skills-scroller'
 import SocialLinks from './components/social-links'
 
+import { Blobatar } from "@blobatar/react";
+import { useGaze } from "@blobatar/react/gaze";
+import "blobatar/motion.css";
+import "blobatar/gaze.css";
+
 function App() {
   const [activeArticle, setActiveArticle] = useState(null)
+  const { ref: blobatarRef } = useGaze({ travel: 3, lookAt: "pointer" })
   return (
     <div className={activeArticle ? 'page-layout article-open' : 'page-layout'}>
     <div className="home-pane">
     <main className="intro-column">
-      {/* TODO: make inline links for "Georgia Tech," "IEEE MIT URTC," and "projects" */}
-      {/* TODO: make my name a cool font that stands out */}
-      <p className="lighter">👋 Hey there! I'm <span className="intro-name">Aditya</span>, a CS student at Georgia Tech. 🐝</p>
-      <SocialLinks />
+      <div className="intro-hero">
+        <div className="intro-identity">
+          <p className="lighter">👋 Hey there! I'm <span className="intro-name">Aditya</span>, a CS student at Georgia Tech. 🐝</p>
+          <SocialLinks />
+        </div>
+        <div className="intro-blobatar">
+          <Blobatar
+            name="adi"
+            animate="hover"
+            size={112}
+            ref={blobatarRef}
+          />
+        </div>
+      </div>
       <p>Previously, I worked on research involving designing interpretable ML pipelines for image based medical diagnosis.</p>
       <p>Now, I'm working on building fundamentals to pursue AI safety-related research, as well as building cool projects.</p>
       <hr />

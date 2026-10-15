@@ -47,6 +47,32 @@
 	color: #d4d4d4;
 }
 
+.intro-hero {
+	display: flex;
+	align-items: center;
+	gap: 24px;
+	margin-bottom: 24px;
+}
+
+.intro-identity {
+	flex: 1;
+	min-width: 0;
+}
+
+.intro-identity .social-links {
+	margin-bottom: 0;
+}
+
+.intro-blobatar {
+	flex: 0 0 clamp(80px, 18vw, 112px);
+}
+
+.intro-blobatar svg {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
 .social-links {
 	display: flex;
 	flex-wrap: wrap;
@@ -107,5 +133,9 @@
 @media (max-width: 600px) {
 	.intro-column {
 		padding-top: 40px;
+	}
+
+	.intro-hero {
+		gap: 16px;
 	}
 }
