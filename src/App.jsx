@@ -34,8 +34,8 @@ function App() {
           />
         </div>
       </div>
-      <p>Previously, I worked on research involving designing interpretable ML pipelines for image based medical diagnosis.</p>
-      <p>Now, I'm working on building fundamentals to pursue AI safety-related research, as well as building cool projects.</p>
+      <p>Studying fundamentals to pursue AI-safety research. Bringing ideas to life at hackathons (and sometimes winning). Exploring expressivity through design and photography.</p>
+      <p>Previously worked on interpretable ML for medical diagnosis, and founded an organization that's donated thousands of pounds of fruit from local communities.</p>
       <hr />
 
       <p className="lighter">Projects</p>
