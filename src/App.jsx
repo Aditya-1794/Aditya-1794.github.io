@@ -2,6 +2,7 @@ import './App.css'
 import { useState } from 'react'
 import { articles } from './articles'
 import ArticleReader from './components/article-reader'
+import Photography from './components/photography'
 
 import Work from './components/work'
 import Writing from './components/writing'
@@ -15,9 +16,10 @@ import "blobatar/gaze.css";
 
 function App() {
   const [activeArticle, setActiveArticle] = useState(null)
+  const [portfolioOpen, setPortfolioOpen] = useState(true)
   const { ref: blobatarRef } = useGaze({ travel: 3, lookAt: "pointer" })
   return (
-    <div className={activeArticle ? 'page-layout article-open' : 'page-layout'}>
+    <div className={`page-layout${activeArticle ? ' article-open' : ''}${portfolioOpen ? ' portfolio-open' : ''}`}>
     <div className="home-pane">
     <main className="intro-column">
       <div className="intro-hero">
@@ -111,11 +113,12 @@ function App() {
       <br />
       <p className="lighter">Writing</p>
       {articles.map((article) => (
-        <Writing key={article.slug} title={article.title} date={article.displayDate} active={activeArticle?.slug === article.slug} onOpen={() => setActiveArticle(article)} />
+        <Writing key={article.slug} title={article.title} date={article.displayDate} active={activeArticle?.slug === article.slug} onOpen={() => { setPortfolioOpen(false); setActiveArticle(article) }} />
       ))}
 
     </main>
     </div>
+    {!activeArticle && <Photography open={portfolioOpen} onToggle={() => setPortfolioOpen(!portfolioOpen)} />}
     {activeArticle && <ArticleReader key={activeArticle.slug} article={activeArticle} onClose={() => setActiveArticle(null)} />}
     </div>
   )
